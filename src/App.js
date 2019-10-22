@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import {CardList} from './components/card-list/card-list.component'
+import { CardList } from './components/card-list/card-list.component'
+import { SearchBox } from './components/search-box/search-box.component'
 
 import './App.css';
 
@@ -12,12 +13,20 @@ class App extends Component {
       monsters: [],
       searchField: ''
     }
+    
+    // this.handleChange = this.handleChange.bind(this)
+    // ^^ this would only need to be here if my handleChange method is not an arrow function, since arrow functions automatically bind this to the class component. (Lexical scoping, binding "this" to where it was defined in the first place)
+
   }
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => this.setState({ monsters: users }))
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
   }
 
   render() {
@@ -27,11 +36,11 @@ class App extends Component {
       )
     return (
       <div className='App'>
-        <input 
-          type='search' 
-          placeholder='search monsters' 
-          onChange={e => this.setState({ searchField: e.target.value })}/>
-
+        <h1>Monsters</h1>
+        <SearchBox
+          placeholder={ 'search..' }
+          handleChange={ this.handleChange }
+        />
         <CardList monsters={filteredMonsters}/>
         
       </div>
