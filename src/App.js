@@ -9,7 +9,8 @@ class App extends Component {
     super(); //Super calls the constructor method, on the component class and gives us access to this.state
 
     this.state = {
-      monsters: []
+      monsters: [],
+      searchField: ''
     }
   }
 
@@ -20,9 +21,18 @@ class App extends Component {
   }
 
   render() {
+    const { monsters, searchField } = this.state; //destructuring, pulling properties off of this.state, and setting them to constants called monsters and searchField
+    const filteredMonsters = monsters.filter(monster => 
+        monster.name.toLowerCase().includes(searchField.toLowerCase())
+      )
     return (
-      <div className="App">
-        <CardList monsters={this.state.monsters}/>
+      <div className='App'>
+        <input 
+          type='search' 
+          placeholder='search monsters' 
+          onChange={e => this.setState({ searchField: e.target.value })}/>
+
+        <CardList monsters={filteredMonsters}/>
         
       </div>
     );
