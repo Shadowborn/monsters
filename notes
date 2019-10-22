@@ -1,0 +1,69 @@
+scripts notes
+
+    start - starts the app
+    build - create react app converts all code to a version the browser understands and puts it in the public folder
+    test - runs test code
+    eject - take out all config process' from babel and web pack incase we want to configure it ourselves
+
+Babel notes
+
+    Babel makes sure our javascript files will work on all browsers
+    webpack is a module bundler. It takes all of our javascript and bundles it for optimization.
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+    ^ this is taking the document and replacing the elment with the id of root in our html file, with our function App
+
+setState 
+    Because of our 1 way data ideoligy, the only way to change the state is with setState. When we use setState, it will re call our render method. When state changes we re-render and display the new state.
+
+
+Array methods
+Methods you can call on any array, that will perform some kind of action on or with that array
+
+    map()
+        map returns us the return of whatever function we pass to it itererated over every element in our array.
+
+    filter()
+        takes a function that gets itererated over each elment in an array. Filters out elements based on the function that we pass to it, filter also returns a new array like .map()
+
+        const myArray = [1,2,3,4,5,6,7]
+
+        myArray.filter(element => element > 4)
+
+        result = [5,6,7]
+
+    reduce()
+
+    find()
+
+    includes()
+        a method that takes a single argument, any elment that we want. It checks to see if the element passed, exists
+
+life cycle methods
+    Methods that get called at different stages of when the component gets rendered.
+
+Promises
+A promise is instantiated with this constructor. Then the promise is given a function and it's passed two things, a resolve and a reject. A "promise" is a promise that this object will eventually have a value, being either a resolve value or a reject value. The promise will be in in a state where its pending until one or the other has been called.
+after 1 second, our promise now holds this value that we passed to it.
+then to access it we call myPromise, and then passing in a function to .then() where value will be the resolved value. 
+You can only call .then() on a resolved promise
+
+    const myPromise = new Promise((resolve, reject) => {
+        if(false) {
+        setTimeout(() => {
+            resolve('I have succeeded')
+        }, 1000)
+        } else {
+            reject('I have failed')
+        }
+    })
+
+    myPromise
+        .then(value => value + '!!!!!')
+        .then(newValue => console.log(newValue))
+        .catch(rejectValue => console.log(rejectValue))
+
+
+Callback function can be used to fix the "lag" when setting state. If I want to setState synchronously (almost immediately) then I should enter the code into a callback function after setting state so the code runs synchronously instead of asynchronously
