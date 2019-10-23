@@ -39,7 +39,7 @@ Methods you can call on any array, that will perform some kind of action on or w
     find()
 
     includes()
-        a method that takes a single argument, any elment that we want. It checks to see if the element passed, exists
+        a method that takes a single argument, any elment that we want. It checks to see if the element passed, exists. 
 
 life cycle methods
     Methods that get called at different stages of when the component gets rendered.
@@ -67,3 +67,12 @@ You can only call .then() on a resolved promise
 
 
 Callback function can be used to fix the "lag" when setting state. If I want to setState synchronously (almost immediately) then I should enter the code into a callback function after setting state so the code runs synchronously instead of asynchronously
+
+
+:::THE JOB OF A REACT DEVELOPER:::
+
+1. Decide on components
+
+2. Decide the State and Where it lives
+
+3. What changes when state changes
